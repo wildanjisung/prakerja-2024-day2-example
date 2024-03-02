@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Directive</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app">
+    <!-- 1. v-bind -->
+    <h1>1. v-bind</h1>
+
+    <input type="text" value="ini value" />
+    <input type="text" v-bind:value="name" />
+    <!-- shorthannd -->
+    <input type="text" :value="name" />
+    {{ name }}
+
+    <hr>
+
+    <!-- 2. v-model -->
+    <h1>2. v-model</h1>
+
+    <input type="text" v-model:value="name" />
+    <input type="text" v-model="name" />
+    {{ name }}
+
+    <hr>
+
+    <!-- 3. v-if, v-else, v-else-if -->
+    <h1>3. v-if, v-else, v-else-if</h1>
+
+    <h3>Nilai siswa</h3>
+    <input type="number" v-model="nilai" />
+
+    <p v-if="nilai > 9"> Sangat Bagus </p>
+    <p v-else-if="nilai > 7"> Bagus </p>
+    <p v-else=> Tetap Semangat Jangan Menyerah </p>
+
+    <hr>
+    
+    <!-- 4. v-on -->
+    <h1>4. v-on</h1>
+
+    <button v-on:click="lakukanSesuatu">Tambah Nilai 1</button>
+    <!-- shorthand -->
+    <button @click="lakukanSesuatu">Tambah Nilai 1</button>
+
+    <hr>
+
+    <!-- 5. v-for -->
+    <h1>5. v-for</h1>
+
+    <ul>
+      <li v-for="buah in listBuah">
+        {{buah}}
+      </li>
+    </ul>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue
+
+    var myVue = createApp({
+      data() {
+        return {
+          name: 'prakerja',
+          nilai: 0,
+          listBuah: [
+            'apel',
+            'jeruk',
+            'melon'
+          ]
+        }
+      },
+      methods: {
+        lakukanSesuatu() {
+          this.nilai++
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

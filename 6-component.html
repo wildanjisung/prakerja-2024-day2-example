@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
+  <div id="app">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+
+  <script type="module">
+    import ButtonCounter from './component/ButtonCounter.js'
+    const { createApp } = Vue
+
+    var myVue = createApp({
+      components: {
+        ButtonCounter
+      },
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

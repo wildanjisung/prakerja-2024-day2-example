@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computed dan Watch</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app">
+    <!-- 1. Computed -->
+    <h1>1. Computed</h1>
+
+    <!-- logika langsung di html -->
+    {{ message.split('').reverse().join('') }}
+
+    <hr>
+
+    <!-- menggunakan computed -->
+    {{ reverseMessage }}
+
+    <hr>
+
+    <!-- 2.Watch -->
+    <h1>2.Watch</h1>
+
+    <input type="number" v-model="angka" />
+    
+    {{ angka }} * 4 = {{ hasil }}
+
+    <p>dikalikan dengan 4</p>
+    hasilnya: {{ hasil }}
+
+    <hr>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue
+
+    var myVue = createApp({
+      data() {
+        return {
+          message: 'Hai',
+          angka: 0,
+          hasil: 0
+        }
+      },
+      computed: {
+        reverseMessage: function () {
+          return this.message.split('').reverse().join('')
+        }
+      },
+      watch: {
+        angka: function(val) {
+          this.hasil = val * 4
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

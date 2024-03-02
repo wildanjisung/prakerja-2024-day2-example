@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Binding</title>
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app">
+    <h1>Text Interpolation</h1>
+    <p>
+      {{ message }}
+    </p>
+
+    <hr>
+
+    <h1>v-html</h1>
+    <p v-html="message"></p>
+
+    <hr>
+
+    <h1>Attribute Bindings</h1>
+    
+    <!-- atribut id pada html -->
+    <p id="judul">{{message}}</p>
+
+    <!-- atribut id dengan directive vue v-bind -->
+    <p v-bind:id="dynamicId">{{message}}</p>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue
+
+    var myVue = createApp({
+      data() {
+        return {
+          message: '<b>Hello Vue!</b>',
+          dynamicId: 'judul'              // ← ubah disini
+          // dynamicId: 'tulisan'         // ← menjadi
+        }
+      }
+    }).mount('#app')
+  </script>
+
+  <style scoped>
+    #judul {
+      background-color: red;
+    }
+    #tulisan {
+      background-color: grey;
+    }
+  </style>
+</body>
+
+</html>
